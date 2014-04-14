@@ -654,10 +654,10 @@
 				<version>1.3.3</version>
 				<configuration>
 					<sourceDirectory>${project.basedir}/src/main/webapp/less</sourceDirectory>
-					<outputDirectory>${project.basedir}/src/main/webapp/css/less</outputDirectory>
+					<outputDirectory>${project.basedir}/src/main/webapp/css/custom</outputDirectory>
 					<compress>true</compress>
 					<includes>
-						<include>*.less</include>
+						<include>**/*.less</include>
 					</includes>
 				</configuration>
 				<executions>

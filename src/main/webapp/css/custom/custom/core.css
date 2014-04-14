@@ -1,0 +1,33 @@
+@import url(http://fonts.googleapis.com/css?family=Fenix);
+@charset "UTF-8";
+body{background-color:#EFEFEF;}
+body,select,button,h1,h2,h3,span,div{font-family:Fenix,Arial,sans-serif !important;}
+.center{text-align:center;margin:auto;}
+#siteHeader{text-align:center;margin-top:4em;}
+#headerWrapper{margin-top:1em;width:100%;}
+#headerLink{color:#333333;text-decoration:none;}
+#headerLink:hover{color:#898989;}
+#wrapper{margin:2em 4em;padding:2em 0em;-webkit-border-radius:1em;-moz-border-radius:1em;border-radius:1em;}
+#accordianWrapper{width:75%;padding:0.1em 0em;margin:1em auto;-webkit-border-radius:1em;-moz-border-radius:1em;border-radius:1em;}
+#accordion{margin:2em auto;width:50%;}
+#navbar{width:100%;}
+.buttonWrapper{text-align:center;}
+.info{font-size:1.2em;text-indent:1.5em;width:40%;margin:1em auto;}
+a{color:#A65000;}a:hover{color:#006633;text-decoration:none;}
+.header{margin:auto;}
+.label{background-color:#FFB673;color:#000;font-size:1.15em;width:80px;float:right;margin-right:1em;text-align:right;}
+.image{text-align:center;vertical-align:middle;margin:auto;}
+#navbarWrapper{position:fixed;top:0;left:0;z-index:999;width:100%;}
+#navbar{margin:0;padding:0;}
+#navbar li{font-size:1.2em;font-weight:600;width:16.6666%;height:50px;float:left;color:#FFF;text-align:center;overflow:hidden;}
+#navbar button{margin-top:0.2em;}
+#navbar p{padding:0px 5px;}
+.subtext{padding-top:15px;}
+.green{background:#6aa63b;}.green:hover{background:#3a5b20;}
+.yellow{background:#fbc700;}.yellow:hover{background:#957600;}
+.error{background:#d52100;}
+.red{background:#d52100;}.red:hover{background:#6f1100;}
+.purple{background:#5122b4;}.purple:hover{background:#865ce0;}
+.blue{background:#0292c0;}.blue:hover{background:#2bcafd;}
+.orange{background:#ff8300;}.orange:hover{background:#994f00;}
+.black{background-color:#000;color:#FFF;}
