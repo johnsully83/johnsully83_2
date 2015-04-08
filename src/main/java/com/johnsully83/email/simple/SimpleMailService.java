@@ -166,6 +166,6 @@ public class SimpleMailService implements MailService {
 
 	public String getPassword() {
 		return password;
-	}  
+	}
 
 }

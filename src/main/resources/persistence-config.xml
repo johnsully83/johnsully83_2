@@ -25,6 +25,12 @@
 	<!-- Datasources -->
 	<bean id="dataSourceMySql" destroy-method="close"
 		class="org.apache.commons.dbcp.BasicDataSource">
+		<!--<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://${RDS_HOSTNAME}:${RDS_PORT}/${RDS_DB_NAME}" />
+		<property name="username" value="${RDS_USERNAME}" />
+		<property name="password" value="${RDS_PASSWORD}" />
+		<property name="validationQuery" value="SELECT 1" />
+		<property name="testOnBorrow" value="true" />-->
 		<property name="driverClassName" value="${jdbc.mySql.driverClassName}" />
 		<property name="url" value="${jdbc.mySql.url}" />
 		<property name="username" value="${jdbc.mySql.user}" />

@@ -11,7 +11,7 @@
 		<property name="nextNode" ref="stateConvertTask" />
 	</bean>
 	<bean id="stateConvertTask" class="com.johnsully83.workflow.node.task.state.StateConvertAndMergeTask">
-		<property name="nextNode" ref="stateReplicateToMongoTask" />
+		<property name="nextNode" ref="endNode_stateReplicationWorkflow" />
 	</bean>
 	<bean id="stateReplicateToMongoTask" class="com.johnsully83.workflow.node.task.state.StateReplicateToMongoTask">
 		<property name="nextNode" ref="endNode_stateReplicationWorkflow" />
@@ -26,7 +26,7 @@
 		<property name="nextNode" ref="countryConvertTask" />
 	</bean>
 	<bean id="countryConvertTask" class="com.johnsully83.workflow.node.task.country.CountryConvertAndMergeTask">
-		<property name="nextNode" ref="countryReplicateToMongoTask" />
+		<property name="nextNode" ref="endNode_countryReplicationWorkflow" />
 	</bean>
 	<bean id="countryReplicateToMongoTask" class="com.johnsully83.workflow.node.task.country.CountryReplicateToMongoTask">
 		<property name="nextNode" ref="endNode_countryReplicationWorkflow" />
@@ -41,7 +41,7 @@
 		<property name="nextNode" ref="cityConvertTask" />
 	</bean>
 	<bean id="cityConvertTask" class="com.johnsully83.workflow.node.task.city.CityConvertAndMergeTask">
-		<property name="nextNode" ref="cityReplicateToMongoTask" />
+		<property name="nextNode" ref="endNode_cityReplicationWorkflow" />
 	</bean>
 	<bean id="cityReplicateToMongoTask" class="com.johnsully83.workflow.node.task.city.CityReplicateToMongoTask">
 		<property name="nextNode" ref="endNode_cityReplicationWorkflow" />
@@ -49,14 +49,14 @@
 	<bean id="endNode_cityReplicationWorkflow" class="com.johnsully83.workflow.node.end.EndNode" />
 	
 	<!-- Currency Replication Workflow -->
-	<bean id="currenyReplicationWorkflow" class="com.johnsully83.workflow.node.start.StartNode">
+	<bean id="currencyReplicationWorkflow" class="com.johnsully83.workflow.node.start.StartNode">
 		<property name="nextNode" ref="currencyQueryTask" />
 	</bean>
 	<bean id="currencyQueryTask" class="com.johnsully83.workflow.node.task.currency.CurrencyQueryTask">
 		<property name="nextNode" ref="currencyConvertTask" />
 	</bean>
 	<bean id="currencyConvertTask" class="com.johnsully83.workflow.node.task.currency.CurrencyConvertAndMergeTask">
-		<property name="nextNode" ref="currencyReplicateToMongoTask" />
+		<property name="nextNode" ref="endNode_currencyReplicationWorkflow" />
 	</bean>
 	<bean id="currencyReplicateToMongoTask" class="com.johnsully83.workflow.node.task.currency.CurrencyReplicateToMongoTask">
 		<property name="nextNode" ref="endNode_currencyReplicationWorkflow" />

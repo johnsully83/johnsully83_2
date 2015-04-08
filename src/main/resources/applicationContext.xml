@@ -8,8 +8,7 @@
 	<bean id="applicationContextProvider" class="com.johnsully83.ApplicationContextProvider">
 	</bean>
 	
-	<bean id="groovyObjectTargetClassPreservingBeanFactoryPostProcessor" class="com.johnsully83.utility.GroovyObjectTargetClassPreservingBeanFactoryPostProcessor">
-	</bean>
+	<context:property-placeholder />
 	
 	<context:component-scan base-package="com.johnsully83.service" />
 	<context:component-scan base-package="com.johnsully83.events" />
@@ -50,8 +49,7 @@
 	</bean>
 
 	<!-- Message Source from .properties files -->
-	<bean id="messageSource"
-		class="org.springframework.context.support.ResourceBundleMessageSource">
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basenames">
 			<list>
 				<value>ValidationMessages</value>

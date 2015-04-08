@@ -15,7 +15,7 @@ public class CurrencyReplicator extends AbstractReplicator<CurrencyTraverser, La
 	private final Logger log = Logger.getLogger(CurrencyReplicator.class);	
 
 	@Autowired
-	public CurrencyReplicator(@Qualifier("currenyReplicationWorkflow") Node<CurrencyTraverser> startNode) {
+	public CurrencyReplicator(@Qualifier("currencyReplicationWorkflow") Node<CurrencyTraverser> startNode) {
 		super(startNode);
 	}
 

@@ -8,13 +8,14 @@
 	<name>johnsully83</name>
 	<url>http://maven.apache.org</url>
 	<properties>
-		<org.springframework.version>4.0.3.RELEASE</org.springframework.version>
-		<org.springframework.security.version>3.2.3.RELEASE</org.springframework.security.version>
+		<org.springframework.version>4.0.6.RELEASE</org.springframework.version>
+		<org.springframework.security.version>3.2.4.RELEASE</org.springframework.security.version>
 		<org.slf4j.version>1.7.6</org.slf4j.version>
 		<hibernate.version>4.3.4.Final</hibernate.version>
 		<jackson.version>2.3.2</jackson.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring.profiles.active>staging</spring.profiles.active>
+		<additionalparam>-Xdoclint:none</additionalparam>
 	</properties>
 
 	<dependencies>
@@ -162,7 +163,7 @@
 		<dependency>
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
-			<version>1.6.2</version>
+			<version>2.2</version>
 		</dependency>
 		<!-- MYSQL -->
 		<dependency>
@@ -231,14 +232,14 @@
 		<!-- Servlet API -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<version>2.5</version>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet.jsp</groupId>
-			<artifactId>jsp-api</artifactId>
-			<version>2.1</version>
+			<artifactId>javax.servlet.jsp-api</artifactId>
+			<version>2.3.1</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -264,32 +265,28 @@
 			<version>2.1.1</version>
 			<scope>provided</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>org.apache.tiles</groupId>
 			<artifactId>tiles-api</artifactId>
-			<version>2.1.4</version>
+			<version>2.2.2</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.tiles</groupId>
 			<artifactId>tiles-core</artifactId>
-			<version>2.1.4</version>
+			<version>2.2.2</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.tiles</groupId>
 			<artifactId>tiles-jsp</artifactId>
-			<version>2.1.4</version>
+			<version>2.2.2</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.tiles</groupId>
 			<artifactId>tiles-servlet</artifactId>
-			<version>2.1.4</version>
+			<version>2.2.2</version>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.struts</groupId>
-			<artifactId>struts-tiles</artifactId>
-			<version>1.3.9</version>
-			<scope>runtime</scope>
-		</dependency>
+		
 		<!-- JSON -->
 		<dependency>
 			<groupId>org.json</groupId>
@@ -439,14 +436,14 @@
 		<dependency>
 			<groupId>org.codehaus.groovy</groupId>
 			<artifactId>groovy-all</artifactId>
-			<version>2.2.2</version>
+			<version>2.3.4</version>
 		</dependency>
 		
 		<!-- Google Guava -->
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
-			<version>r09</version>
+			<version>16.0.1</version>
 		</dependency>
 		
 		<!-- Bouncy Castle Encryption -->
@@ -549,9 +546,9 @@
 			<properties>
 				<!-- Database -->
 				<jdbc.mySql.driverClassName>com.mysql.jdbc.Driver</jdbc.mySql.driverClassName>
-				<jdbc.mySql.url>jdbc:mysql://ec2-23-21-211-172.compute-1.amazonaws.com/johnsully83</jdbc.mySql.url>
+				<jdbc.mySql.url>jdbc:mysql://johnsully83.c6mta2gqbhwf.us-east-1.rds.amazonaws.com:3306/johnsully83</jdbc.mySql.url>
 				<jdbc.mySql.user>johnsully83</jdbc.mySql.user>
-				<jdbc.mySql.password>rocky9860</jdbc.mySql.password>
+				<jdbc.mySql.password>rocky71828</jdbc.mySql.password>
 				<!-- Mongo DB -->
 				<mongo.databasename>o2E2yD1DY46i2u4TbSxkYQ</mongo.databasename>
 				<mongo.host>ana.mongohq.com</mongo.host>
@@ -621,19 +618,19 @@
 					<version>3.1</version>
 					<configuration>
 						<compilerId>groovy-eclipse-compiler</compilerId>
-						<source>1.7</source>
-						<target>1.7</target>
+						<source>1.8</source>
+						<target>1.8</target>
 					</configuration>
 					<dependencies>
 						<dependency>
 							<groupId>org.codehaus.groovy</groupId>
 							<artifactId>groovy-eclipse-compiler</artifactId>
-							<version>2.8.0-01</version>
+							<version>2.9.0-01</version>
 						</dependency>
 						<dependency>
 							<groupId>org.codehaus.groovy</groupId>
 							<artifactId>groovy-eclipse-batch</artifactId>
-							<version>2.1.5-03</version>
+							<version>2.3.4-01</version>
 						</dependency>
 					</dependencies>
 				</plugin>
