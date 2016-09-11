@@ -9,13 +9,13 @@
 		http://www.springframework.org/schema/data/mongo
 		http://www.springframework.org/schema/data/mongo/spring-mongo.xsd">
 
-	<mongo:db-factory id="mongoDbFactory" dbname="${mongo.databasename}"
-		host="${mongo.host}" port="${mongo.port}" username="${mongo.username}"
-		password="${mongo.password}" />
+	<!--<mongo:db-factory id="mongoDbFactory" dbname="${mongo.databasename}"-->
+		<!--host="${mongo.host}" port="${mongo.port}" username="${mongo.username}"-->
+		<!--password="${mongo.password}" />-->
 
-	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
-		<constructor-arg name="mongoDbFactory" ref="mongoDbFactory" />
-	</bean>
+	<!--<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">-->
+		<!--<constructor-arg name="mongoDbFactory" ref="mongoDbFactory" />-->
+	<!--</bean>-->
 
 	<tx:annotation-driven />
 	

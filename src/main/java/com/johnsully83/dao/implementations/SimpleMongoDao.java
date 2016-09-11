@@ -2,6 +2,7 @@ package com.johnsully83.dao.implementations;
 
 import java.util.List;
 
+import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Sort;
@@ -17,8 +18,8 @@ import com.johnsully83.model.enumeration.mongo.MapReduceFunctions;
 
 public class SimpleMongoDao<T extends MongoCloudTable<PK>, PK extends Comparable<PK>> implements MongoDao<T, PK> {
 	
-	@Autowired @Qualifier("mongoTemplate")
-	private MongoOperations mongoOperations;
+//	@Autowired @Qualifier("mongoTemplate")
+//	private MongoOperations mongoOperations;
 	
 	private final Class<T> entityClass;
 	private final String collectionName;
@@ -31,29 +32,29 @@ public class SimpleMongoDao<T extends MongoCloudTable<PK>, PK extends Comparable
 
 	@Override
 	public Long count() {
-		return mongoOperations.count(new Query(), entityClass);
+		return 0L;//return mongoOperations.count(new Query(), entityClass);
 	}
 	
 	@Override
 	public void add(T record) {
 		checkCollectionExists();
 		
-		mongoOperations.insert(record);
+//		mongoOperations.insert(record);
 	}
 
 	@Override
 	public void addAll(List<T> records) {
 		checkCollectionExists();
 		
-		mongoOperations.insertAll(records);
+//		mongoOperations.insertAll(records);
 	}
 
 	@Override
 	public T merge(T record) {
 		checkCollectionExists();
 		
-		mongoOperations.save(record);
-		List<T> results = mongoOperations.find(new Query(Criteria.where("_id").is(record.getId())), entityClass);
+//		mongoOperations.save(record);
+		List<T> results = Lists.newArrayList();//mongoOperations.find(new Query(Criteria.where("_id").is(record.getId())), entityClass);
 		
 		return results.get(0);
 	}
@@ -62,7 +63,7 @@ public class SimpleMongoDao<T extends MongoCloudTable<PK>, PK extends Comparable
 	public void remove(T record) {
 		checkCollectionExists();
 		
-		mongoOperations.remove(record);
+//		mongoOperations.remove(record);
 	}
 	
 	@Override
@@ -89,40 +90,51 @@ public class SimpleMongoDao<T extends MongoCloudTable<PK>, PK extends Comparable
 	public void remove(Criteria criteria, Sort sort, Integer limit) {
 		checkCollectionExists();
 		
-		if(criteria == null) {
-			criteria = new Criteria();
-		}
+//		if(criteria == null) {
+//			criteria = new Criteria();
+//		}
+//
+//		if(sort == null) {
+//			sort = new Sort(Sort.Direction.ASC, "_id");
+//		}
 		
-		if(sort == null) {
-			sort = new Sort(Sort.Direction.ASC, "_id");
-		}
-		
-		if(limit == null) {
-			mongoOperations.remove(new Query(criteria).with(sort), entityClass);
-		} else {
-			mongoOperations.remove(new Query(criteria).with(sort).limit(limit), entityClass);
-		}
+//		if(limit == null) {
+//			mongoOperations.remove(new Query(criteria).with(sort), entityClass);
+//		} else {
+//			mongoOperations.remove(new Query(criteria).with(sort).limit(limit), entityClass);
+//		}
 	}
 
 	@Override
 	public T findByID(PK id) {
 		checkCollectionExists();
 		
-		return mongoOperations.findById(id, entityClass);
+		try {
+			return entityClass.newInstance();//mongoOperations.findById(id, entityClass);
+		} catch(IllegalAccessException | InstantiationException e) {
+			return null;
+		}
 	}
 
 	@Override
 	public T find(PK key) {
 		checkCollectionExists();
 		
-		return mongoOperations.findOne(new Query(Criteria.where("_id").is(key)), entityClass);
+//		return mongoOperations.findOne(new Query(Criteria.where("_id").is(key)), entityClass);
+
+
+		try {
+			return entityClass.newInstance();//mongoOperations.findById(id, entityClass);
+		} catch(IllegalAccessException | InstantiationException e) {
+			return null;
+		}
 	}
 
 	@Override
 	public List<T> findAll() {
 		checkCollectionExists();
 		
-		return mongoOperations.findAll(entityClass);
+		return Lists.newArrayList();//mongoOperations.findAll(entityClass);
 	}
 	
 	@Override
@@ -171,7 +183,7 @@ public class SimpleMongoDao<T extends MongoCloudTable<PK>, PK extends Comparable
 	public List<T> query(Query query) {
 		checkCollectionExists();
 		
-		return mongoOperations.find(query, entityClass);
+		return Lists.newArrayList();//mongoOperations.find(query, entityClass);
 	}
 
 	@Override
@@ -186,7 +198,7 @@ public class SimpleMongoDao<T extends MongoCloudTable<PK>, PK extends Comparable
 			options = new MapReduceOptions();
 		}
 		
-		return mongoOperations.mapReduce(query, collectionName, functions.mapFunction(), functions.reduceFunction(), options, resultClass);
+		return null;//mongoOperations.mapReduce(query, collectionName, functions.mapFunction(), functions.reduceFunction(), options, resultClass);
 	}
 
 	@Override
@@ -225,9 +237,9 @@ public class SimpleMongoDao<T extends MongoCloudTable<PK>, PK extends Comparable
 	}
 
 	private void checkCollectionExists() {
-		if(!mongoOperations.collectionExists(entityClass)) {
-			mongoOperations.createCollection(entityClass);
-		}
+//		if(!mongoOperations.collectionExists(entityClass)) {
+//			mongoOperations.createCollection(entityClass);
+//		}
 	}
 
 }
