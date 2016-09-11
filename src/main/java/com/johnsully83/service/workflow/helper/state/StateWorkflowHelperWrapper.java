@@ -5,13 +5,15 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import com.jgeoplanet.Place;
 import com.johnsully83.model.cloud.jpa.State;
 import com.johnsully83.service.workflow.helper.AbstractWorkflowHelperWrapper;
 
 public class StateWorkflowHelperWrapper extends AbstractWorkflowHelperWrapper<State, Integer> {
-	private List<State> allEntities;
-	private Map<Place, List<Place>> geoPlanetStates;
+	private List<State> allEntities = Lists.newArrayList();
+	private Map<Place, List<Place>> geoPlanetStates = Maps.newLinkedHashMap();
 	
 	public StateWorkflowHelperWrapper() {
 		super();

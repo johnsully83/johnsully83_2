@@ -17,21 +17,21 @@ import com.johnsully83.service.workflow.helper.AbstractWorkflowHelperService;
 import com.johnsully83.workflow.traversing.implementations.CountryTraverser;
 
 public class CountryWorkflowHelperService extends AbstractWorkflowHelperService<Country, Integer> {
-	private final GeoPlanet geoPlanetApi;
+//	private final GeoPlanet geoPlanetApi;
 	private final MongoDao<MongoCountry, Integer> countryMongoDao;
 
 	@SuppressWarnings("unchecked")
 	public CountryWorkflowHelperService() {
 		super(AppContext.getApplicationContext().getBean("countryDtoService", DtoService.class));
-		this.geoPlanetApi=AppContext.getApplicationContext().getBean("geoPlanetApi", GeoPlanet.class);
+//		this.geoPlanetApi=AppContext.getApplicationContext().getBean("geoPlanetApi", GeoPlanet.class);
 		this.countryMongoDao=AppContext.getApplicationContext().getBean("countryMongoDao", MongoDao.class);
 	}
 	
 	public void queryForCountries(CountryTraverser tasks) throws GeoPlanetException {
-		Place earth = geoPlanetApi.getPlace(1);
-		PlaceCollection countries = earth.getChildren().type(GeoPlanetPlaceType.COUNTRY.getName());
-		
-		tasks.getWorkflowHelperWrapper().setGeoPlanetCountries(countries.get());
+//		Place earth = geoPlanetApi.getPlace(1);
+//		PlaceCollection countries = earth.getChildren().type(GeoPlanetPlaceType.COUNTRY.getName());
+//
+//		tasks.getWorkflowHelperWrapper().setGeoPlanetCountries(countries.get());
 	}
 	
 	public void convertCountriesAndMerge(CountryTraverser tasks) {

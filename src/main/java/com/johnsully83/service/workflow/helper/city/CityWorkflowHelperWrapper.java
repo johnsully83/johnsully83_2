@@ -5,14 +5,16 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import com.jgeoplanet.Place;
 import com.johnsully83.model.cloud.jpa.City;
 import com.johnsully83.model.cloud.jpa.Country;
 import com.johnsully83.service.workflow.helper.AbstractWorkflowHelperWrapper;
 
 public class CityWorkflowHelperWrapper extends AbstractWorkflowHelperWrapper<City, Integer> {
-	private List<City> allEntities;
-	private Map<Place, List<Place>> geoPlanetCities;
+	private List<City> allEntities = Lists.newArrayList();
+	private Map<Place, List<Place>> geoPlanetCities = Maps.newLinkedHashMap();
 	
 	private Country nextCountry;
 	

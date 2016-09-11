@@ -30,7 +30,7 @@ import com.johnsully83.workflow.traversing.implementations.CityTraverser;
 public class CityWorkflowHelperService extends AbstractWorkflowHelperService<City, Integer> {
 	private final Logger log = Logger.getLogger(CityWorkflowHelperService.class);
 
-	private final GeoPlanet geoPlanetApi;
+//	private final GeoPlanet geoPlanetApi;
 	private final MongoDao<MongoCity, Integer> cityMongoDao;
 	private final MongoDao<MongoState, Integer> stateMongoDao;
 	private final MongoDao<MongoCountry, Integer> countryMongoDao;
@@ -40,7 +40,7 @@ public class CityWorkflowHelperService extends AbstractWorkflowHelperService<Cit
 	@SuppressWarnings("unchecked")
 	public CityWorkflowHelperService() {
 		super(AppContext.getApplicationContext().getBean("cityDtoService", DtoService.class));
-		this.geoPlanetApi=AppContext.getApplicationContext().getBean("geoPlanetApi", GeoPlanet.class);
+//		this.geoPlanetApi=AppContext.getApplicationContext().getBean("geoPlanetApi", GeoPlanet.class);
 		this.cityMongoDao=AppContext.getApplicationContext().getBean("cityMongoDao", MongoDao.class);
 		this.stateDtoService=AppContext.getApplicationContext().getBean("stateDtoService", DtoService.class);
 		this.countryDtoService=AppContext.getApplicationContext().getBean("countryDtoService", DtoService.class);
@@ -49,58 +49,58 @@ public class CityWorkflowHelperService extends AbstractWorkflowHelperService<Cit
 	}
 
 	public void queryForCities(CityTraverser tasks) throws GeoPlanetException {
-		Place earth = geoPlanetApi.getPlace(1);
-		PlaceCollection countries = earth.getChildren().type(GeoPlanetPlaceType.COUNTRY.getName());
-
-		Map<Place, List<Place>> stateMap = new LinkedHashMap<Place, List<Place>>();
-
-		for(Place country : countries.get()) {
-			if(!country.getName().equalsIgnoreCase(tasks.getWorkflowHelperWrapper().getNextCountry().getName())) {
-				continue;
-			}
-
-			List<Country> countryDtos = countryDtoService.query("name = '"+country.getName().replaceAll("'", "''")+"'");
-
-			if(countryDtos.isEmpty()) {
-				log.error("Could not find country DTO with name "+country.getName()+" even though there is a Yahoo! record for it.");
-				continue;
-			} else {
-				if(!countryDtos.get(0).getHasStates()) {
-					continue;
-				}
-			}
-
-			List<Place> states = country.getChildren().type(GeoPlanetPlaceType.STATE.getName()).get();
-			
-			for(Place state : states) {
-				List<Place> subAreas = getSafely(state, GeoPlanetPlaceType.COUNTY.getName());
-				
-				List<Place> subAreasToAdd = new ArrayList<Place>();
-				
-				for(Place county : subAreas) {
-					subAreasToAdd.addAll(getSafely(county, GeoPlanetPlaceType.LOCALADMINISTRATIVEAREA.getName()));
-				}
-				
-				subAreas.addAll(subAreasToAdd);
-				subAreas.addAll(getSafely(state, GeoPlanetPlaceType.LOCALADMINISTRATIVEAREA.getName()));
-				
-				List<Place> cities = new ArrayList<Place>();
-				
-				cities.addAll(getSafely(state, GeoPlanetPlaceType.TOWN.getName()));
-				
-				for(Place subArea : subAreas) {
-					cities.addAll(getSafely(subArea, GeoPlanetPlaceType.TOWN.getName()));
-				}
-				
-				stateMap.put(state, cities);
-				
-				if(country.getName().equalsIgnoreCase("United States")) {
-					log.info(state.getName()+" has "+cities.size()+" cities");
-				}
-			}
-		}
-		
-		tasks.getWorkflowHelperWrapper().setGeoPlanetCities(stateMap);
+//		Place earth = geoPlanetApi.getPlace(1);
+//		PlaceCollection countries = earth.getChildren().type(GeoPlanetPlaceType.COUNTRY.getName());
+//
+//		Map<Place, List<Place>> stateMap = new LinkedHashMap<Place, List<Place>>();
+//
+//		for(Place country : countries.get()) {
+//			if(!country.getName().equalsIgnoreCase(tasks.getWorkflowHelperWrapper().getNextCountry().getName())) {
+//				continue;
+//			}
+//
+//			List<Country> countryDtos = countryDtoService.query("name = '"+country.getName().replaceAll("'", "''")+"'");
+//
+//			if(countryDtos.isEmpty()) {
+//				log.error("Could not find country DTO with name "+country.getName()+" even though there is a Yahoo! record for it.");
+//				continue;
+//			} else {
+//				if(!countryDtos.get(0).getHasStates()) {
+//					continue;
+//				}
+//			}
+//
+//			List<Place> states = country.getChildren().type(GeoPlanetPlaceType.STATE.getName()).get();
+//
+//			for(Place state : states) {
+//				List<Place> subAreas = getSafely(state, GeoPlanetPlaceType.COUNTY.getName());
+//
+//				List<Place> subAreasToAdd = new ArrayList<Place>();
+//
+//				for(Place county : subAreas) {
+//					subAreasToAdd.addAll(getSafely(county, GeoPlanetPlaceType.LOCALADMINISTRATIVEAREA.getName()));
+//				}
+//
+//				subAreas.addAll(subAreasToAdd);
+//				subAreas.addAll(getSafely(state, GeoPlanetPlaceType.LOCALADMINISTRATIVEAREA.getName()));
+//
+//				List<Place> cities = new ArrayList<Place>();
+//
+//				cities.addAll(getSafely(state, GeoPlanetPlaceType.TOWN.getName()));
+//
+//				for(Place subArea : subAreas) {
+//					cities.addAll(getSafely(subArea, GeoPlanetPlaceType.TOWN.getName()));
+//				}
+//
+//				stateMap.put(state, cities);
+//
+//				if(country.getName().equalsIgnoreCase("United States")) {
+//					log.info(state.getName()+" has "+cities.size()+" cities");
+//				}
+//			}
+//		}
+//
+//		tasks.getWorkflowHelperWrapper().setGeoPlanetCities(stateMap);
 	}
 
 	private List<Place> getSafely(Place place, String name) {

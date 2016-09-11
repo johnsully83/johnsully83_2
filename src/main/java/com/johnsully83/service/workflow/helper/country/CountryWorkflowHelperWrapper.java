@@ -3,13 +3,14 @@ package com.johnsully83.service.workflow.helper.country;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.common.collect.Lists;
 import com.jgeoplanet.Place;
 import com.johnsully83.model.cloud.jpa.Country;
 import com.johnsully83.service.workflow.helper.AbstractWorkflowHelperWrapper;
 
 public class CountryWorkflowHelperWrapper extends AbstractWorkflowHelperWrapper<Country, Integer> {
-	private List<Country> allEntities;
-	private List<Place> geoPlanetCountries;
+	private List<Country> allEntities = Lists.newArrayList();
+	private List<Place> geoPlanetCountries = Lists.newArrayList();
 
 	public CountryWorkflowHelperWrapper() {
 		super();

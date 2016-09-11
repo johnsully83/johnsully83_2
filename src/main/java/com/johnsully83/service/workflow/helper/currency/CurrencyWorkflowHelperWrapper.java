@@ -5,15 +5,17 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import com.johnsully83.model.cloud.jpa.CurrencyValue;
 import com.johnsully83.model.cloud.jpa.LatestRates;
 import com.johnsully83.service.workflow.helper.AbstractWorkflowHelperWrapper;
 
 public class CurrencyWorkflowHelperWrapper extends AbstractWorkflowHelperWrapper<LatestRates, Integer> {
-	private List<LatestRates> allEntities;
-	private Map<String, Double> currencyValues;
-	private Map<String, String> currencies;
-	private List<CurrencyValue> replicatedCurrencies;
+	private List<LatestRates> allEntities = Lists.newArrayList();
+	private Map<String, Double> currencyValues = Maps.newLinkedHashMap();
+	private Map<String, String> currencies = Maps.newLinkedHashMap();
+	private List<CurrencyValue> replicatedCurrencies = Lists.newArrayList();
 
 	public CurrencyWorkflowHelperWrapper() {
 		super();

@@ -66,8 +66,8 @@
 		</property>
 	</bean>
 
-	<bean id="geoPlanetApi" class="com.jgeoplanet.GeoPlanet">
-		<constructor-arg index="0" value="${geoPlanetApiKey}" />
-	</bean>
+	<!--<bean id="geoPlanetApi" class="com.jgeoplanet.GeoPlanet">-->
+		<!--<constructor-arg index="0" value="${geoPlanetApiKey}" />-->
+	<!--</bean>-->
 
 </beans>

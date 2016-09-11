@@ -27,7 +27,7 @@ import com.johnsully83.workflow.traversing.implementations.StateTraverser;
 public class StateWorkflowHelperService extends AbstractWorkflowHelperService<State, Integer> {
 	private final Logger log = Logger.getLogger(StateWorkflowHelperService.class);
 
-	private final GeoPlanet geoPlanetApi;
+//	private final GeoPlanet geoPlanetApi;
 	private final DtoService<Country, Integer> countryDtoService;
 	private final MongoDao<MongoState, Integer> stateMongoDao;
 	private final MongoDao<MongoCountry, Integer> countryMongoDao;
@@ -36,29 +36,29 @@ public class StateWorkflowHelperService extends AbstractWorkflowHelperService<St
 	public StateWorkflowHelperService() {
 		super(AppContext.getApplicationContext().getBean("stateDtoService", DtoService.class));
 		this.countryDtoService=AppContext.getApplicationContext().getBean("countryDtoService", DtoService.class);
-		this.geoPlanetApi=AppContext.getApplicationContext().getBean("geoPlanetApi", GeoPlanet.class);
+//		this.geoPlanetApi=AppContext.getApplicationContext().getBean("geoPlanetApi", GeoPlanet.class);
 		this.stateMongoDao=AppContext.getApplicationContext().getBean("stateMongoDao", MongoDao.class);
 		this.countryMongoDao=AppContext.getApplicationContext().getBean("countryMongoDao", MongoDao.class);
 	}
 
 	public void queryForStates(StateTraverser tasks) throws GeoPlanetException {
-		Place earth = geoPlanetApi.getPlace(1);
-		PlaceCollection countries = earth.getChildren().type(GeoPlanetPlaceType.COUNTRY.getName());
-
-		Map<Place, List<Place>> stateMap = new LinkedHashMap<Place, List<Place>>();
-
-		for(Place country : countries.get()) {
-			try {
-				PlaceCollection states = country.getChildren().type(GeoPlanetPlaceType.STATE.getName());
-
-				stateMap.put(country, states.get());
-			} catch(GeoPlanetException e) {
-				stateMap.put(country, Collections.<Place>emptyList());
-				continue;
-			}
-		}
-
-		tasks.getWorkflowHelperWrapper().setGeoPlanetStates(stateMap);
+//		Place earth = geoPlanetApi.getPlace(1);
+//		PlaceCollection countries = earth.getChildren().type(GeoPlanetPlaceType.COUNTRY.getName());
+//
+//		Map<Place, List<Place>> stateMap = new LinkedHashMap<Place, List<Place>>();
+//
+//		for(Place country : countries.get()) {
+//			try {
+//				PlaceCollection states = country.getChildren().type(GeoPlanetPlaceType.STATE.getName());
+//
+//				stateMap.put(country, states.get());
+//			} catch(GeoPlanetException e) {
+//				stateMap.put(country, Collections.<Place>emptyList());
+//				continue;
+//			}
+//		}
+//
+//		tasks.getWorkflowHelperWrapper().setGeoPlanetStates(stateMap);
 	}
 
 	public void convertStatesAndMerge(StateTraverser tasks) throws NoCountryFoundException {
